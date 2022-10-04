@@ -22,11 +22,6 @@ public class TaxRegimeController {
     @Autowired
     TaxRegimeRepository taxService;
 
-    @PostMapping
-    public ResponseEntity<Object> saveTaxRegime(@RequestBody TaxRegimeModel taxRegimeModel){
-        return ResponseEntity.status(HttpStatus.OK).body(taxService.save(taxRegimeModel));
-    }
-
     @GetMapping("/all")
     public  ResponseEntity<Object> getAllCustomers(){
         return ResponseEntity.status(HttpStatus.OK).body(taxService.findAll());
