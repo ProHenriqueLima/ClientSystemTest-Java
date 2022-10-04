@@ -28,7 +28,7 @@ public class ClientService {
         if (!verifyEmailClient(clientModel.getEmail())){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This email is already in use !");
         }
-        if (!verifyEmailClient(clientModel.getEmail())){
+        if (!verifyCnpjClient(clientModel.getCnpj())){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This cnpj is already in use !");
         }
         if (!taxRegimeRepository.findById(idTaxRegime).isPresent()){
