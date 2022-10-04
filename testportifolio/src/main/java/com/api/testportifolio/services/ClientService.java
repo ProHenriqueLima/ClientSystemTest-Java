@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @Service
-public class ClientService {
+public class ClientService implements IClientService{
 
     @Autowired
     ClientRepository clientRepository;

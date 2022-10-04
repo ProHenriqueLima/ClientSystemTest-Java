@@ -4,6 +4,7 @@ import com.api.testportifolio.dtos.ClientRequestDto;
 import com.api.testportifolio.models.ClientModel;
 import com.api.testportifolio.repositories.ClientRepository;
 import com.api.testportifolio.services.ClientService;
+import com.api.testportifolio.services.IClientService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,11 @@ import javax.validation.Valid;
 @CrossOrigin(origins = "*")
 public class ClientController {
 
-    @Autowired
-    ClientService clientService;
+    // Exemplo de Injeção de dependência, através do construtor.
+    private final IClientService clientService;
+    public ClientController(IClientService _clientService){
+        clientService = _clientService;
+    }
 
     @Autowired
     ClientRepository clientRepository;
