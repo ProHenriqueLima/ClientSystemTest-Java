@@ -14,6 +14,9 @@ public interface ClientRepository extends JpaRepository<ClientModel, Long>
     @Query(value = "SELECT u FROM ClientModel u WHERE u.email = :email")
     ClientModel verifyExistedUser(@Param("email") String email);
 
+    @Query(value = "SELECT u FROM ClientModel u WHERE u.cnpj = :cnpj")
+    ClientModel verifyExistedClientCnpj(@Param("cnpj") String cnpj);
+
     @Query(value = "SELECT * FROM tb_customers u WHERE u.active = true",nativeQuery = true)
     Collection<ClientModel> usersActive();
 

@@ -28,6 +28,9 @@ public class ClientService {
         if (!verifyEmailClient(clientModel.getEmail())){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This email is already in use !");
         }
+        if (!verifyEmailClient(clientModel.getEmail())){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This cnpj is already in use !");
+        }
         if (!taxRegimeRepository.findById(idTaxRegime).isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This tax regime does not exist !");
         }
@@ -58,6 +61,12 @@ public class ClientService {
     private boolean verifyEmailClient(String email)
     {
         ClientModel clientModel = clientRepository.verifyExistedUser(email);
+        if (clientModel == null){return true;}
+        else {return false;}
+    }
+    private boolean verifyCnpjClient(String cnpj)
+    {
+        ClientModel clientModel = clientRepository.verifyExistedClientCnpj(cnpj);
         if (clientModel == null){return true;}
         else {return false;}
     }
